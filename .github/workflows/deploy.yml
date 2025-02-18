@@ -1,0 +1,12 @@
+name: Deployment
+run-name: Deploy builded frontend app
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+jobs:
+  Deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy run
+        run: echo "Deploying..."
