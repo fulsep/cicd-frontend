@@ -2,7 +2,7 @@ name: Deployment
 run-name: Deploy builded frontend app
 on:
   workflow_run:
-    workflows: [Build-Frontend]
+    workflows: [Build and Release]
     types: [completed]
 jobs:
   Deployment:
