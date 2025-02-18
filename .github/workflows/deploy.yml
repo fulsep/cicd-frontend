@@ -26,3 +26,8 @@ jobs:
           touch testfile
           echo "Hello" >> testfile
           scp -o StrictHostKeyChecking=no testfile irul@ubuntu.zebroid-gila.ts.net:~/testfile
+      - name: Restore git global config
+        if: always()
+        run: |
+          MATCH=$(grep -o 'git@key-[^"]*\.github\.com:.*/[^"]*' ~/.gitconfig)
+          git config --global --remove-section url.${MATCH}
