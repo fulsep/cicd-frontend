@@ -29,3 +29,5 @@ jobs:
           tag: ${{ github.ref }}
           artifacts: frontend-app.zip
           body: ''
+      - name: Listing file
+        run: ls -lah
