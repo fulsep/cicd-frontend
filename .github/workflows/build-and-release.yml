@@ -20,8 +20,6 @@ jobs:
       - run: npm run build
       - name: Compressing artefacts
         run: zip -r frontend-app.zip dist/*
-      - name: Listing file
-        run: ls -lah
       - name: Uploading artefacts
         uses: softprops/action-gh-release@v2
         with:
