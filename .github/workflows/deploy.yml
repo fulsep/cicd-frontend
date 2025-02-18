@@ -22,12 +22,5 @@ jobs:
           tags: tag:server
       - name: Copying file
         run: |
-          ls -lah
-          touch testfile
-          echo "Hello" >> testfile
-          scp -o StrictHostKeyChecking=no testfile irul@ubuntu.zebroid-gila.ts.net:~/testfile
-      - name: Restore git global config
-        if: always()
-        run: |
-          MATCH=$(grep -o 'git@key-[^"]*\.github\.com:.*/[^"]*' ~/.gitconfig)
-          git config --global --remove-section url.${MATCH}
+          curl -o frontend-app.zip -L https://github.com/fulsep/cicd-frontend/releases/latest/download/frontend-app.zip
+          scp -o StrictHostKeyChecking=no frontend-app.zip irul@ubuntu.zebroid-gila.ts.net:~/frontend-app.zip
