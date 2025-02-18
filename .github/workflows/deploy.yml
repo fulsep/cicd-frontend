@@ -25,4 +25,5 @@ jobs:
           ls -lah
           touch testfile
           echo "Hello" >> testfile
-          scp testfile irul@ubuntu.zebroid-gila.ts.net:~/testfile
+          ping ubuntu.zebroid-gila.ts.net
+          # scp testfile irul@ubuntu.zebroid-gila.ts.net:~/testfile
