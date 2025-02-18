@@ -25,5 +25,4 @@ jobs:
           ls -lah
           touch testfile
           echo "Hello" >> testfile
-          ping ubuntu.zebroid-gila.ts.net
           scp -o StrictHostKeyChecking=no testfile irul@ubuntu.zebroid-gila.ts.net:~/testfile
