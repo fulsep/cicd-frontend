@@ -20,6 +20,8 @@ jobs:
       - run: npm run build
       - name: Compressing artefacts
         run: zip -r frontend-app.zip dist/*
+      - name: Listing file
+        run: ls -lah
       - name: Uploading artefacts
         uses: ncipollo/release-action@v1
         env:
@@ -29,5 +31,3 @@ jobs:
           tag: ${{ github.ref }}
           artifacts: frontend-app.zip
           body: ''
-      - name: Listing file
-        run: ls -lah
