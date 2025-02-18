@@ -1,0 +1,31 @@
+name: Build and Release
+run-name: Building Vite frontend with Github Actions and Release it.
+on:
+  push:
+    tags: ['v*']
+jobs:
+  Build-Frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "${{ github.repository }} repository has been cloned."
+      - name: Preparing nodejs-lts
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/jod'
+      - run: echo "Installing dependencies"
+      - run: npm install
+      - run: echo "Building frontend"
+      - run: npm run build
+      - name: Compressing artefacts
+        run: zip -r frontend-app.zip dist/*
+      - name: Uploading artefacts
+        uses: ncipollo/release-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: "Release ${{ github.ref}}"
+          tag: ${{ github.ref }}
+          artifacts: frontend-app.zip
+          body: ''
